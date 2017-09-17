@@ -5,7 +5,8 @@ services:
 install:
   - ":" # do nothing
 script:
-  - travis_wait 120 docker build -t tsuzu/webrtc .
+  - ping localhost -c 60 & # Prevent killing
+  - docker build -t tsuzu/webrtc .
 after_success:
       - if [ "$TRAVIS_BRANCH" == "master" ]; then
         docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
