@@ -5,7 +5,7 @@ services:
 install:
   - ":" # do nothing
 script:
-  - sh -c "ping localhost -c 60 &"; docker build -t tsuzu/webrtc .
+  - sh -c "ping localhost -i 60 &"; docker build -t tsuzu/webrtc .
 after_success:
       - if [ "$TRAVIS_BRANCH" == "master" ]; then
         docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
